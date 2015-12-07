@@ -4,7 +4,7 @@ type MaybeBuilder() =
 (*
 3. For this step you will need to implement Bind
 *)
-      member __.Bind(maybeValue: 'a option, func) = 
+      member __.Bind(maybeValue: 'a option, func) : 'b option= 
           match maybeValue with
           | Some value -> func value
           | None -> None
@@ -32,6 +32,7 @@ module ``Divide by zero `` =
         | _ -> Some(a / b)
     let maybe = MaybeBuilder()
 
+
     let divisionMCE a b c d = 
       maybe { let! x = divide a b
               let! y = divide x c
@@ -47,3 +48,12 @@ module ``Divide by zero `` =
 
     do divisionM 120 4 3 2 = divisionMCE 120 4 3 2 |> printfn "Should be true: %A"
     
+(*
+4. Change divisionMCE2 so that it returns an int option
+*)
+
+    let divisionMCE2 a b c d : int option= 
+      maybe { let! x = divide a b
+              let! y = divide x c
+              let! z = divide y d
+              return! Some z }
