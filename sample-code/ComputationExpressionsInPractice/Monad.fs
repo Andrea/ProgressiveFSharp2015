@@ -2,7 +2,7 @@
     
 type MaybeBuilder() = 
 (*
-3. For this step you will need to implement Bind
+3. For this step you will need to implement Bind for the Maybe builder
 *)
       member __.Bind(maybeValue: 'a option, func) : 'b option= 
           match maybeValue with
@@ -14,7 +14,7 @@ type MaybeBuilder() =
     
 
 module ``Divide by zero `` =
-    
+    // This is what we used to do but not a good idea
     let division a b c d = 
         match b with
         | 0 -> None

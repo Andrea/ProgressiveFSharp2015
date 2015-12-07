@@ -22,7 +22,11 @@ module Results =
       else Success "Product27182"
 
   type EitherBuilder() = 
-        
+(*
+5. For this step you will need to implement Bind for the Either builder
+   the idea is that you need to evaluate the function is everything is
+   ok do what makes sense if there is an error
+*)
           member __.Bind(value, func) = 
               match value with
               | Success a -> 

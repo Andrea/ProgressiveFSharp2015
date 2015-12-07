@@ -1,28 +1,6 @@
 ﻿namespace ComputationExpressionsInPractice
 open FsCheck
 
-module UnderstandingZero =
-(*
-5. Implement a builder with a Zero member, maske sure you 
-   print something from within it.
-*)
-    type ZeroBuilder ()=
-        member __.Zero() = 
-            printfn "From within Zero"
-            0
-
-    let zero = ZeroBuilder()       
-    let justPrint ()= zero {
-        printfn "Inside the computation expression"
-    }
-    justPrint()
-    
-    let withIf (x:bool) = zero {
-       if (x) then
-           printfn("This is true")    
-    }
-    withIf false
-
 module MonoidSetup =
   type Colour = 
       { r : byte
@@ -61,7 +39,6 @@ module AddingTwoColours =
           res <- addColour res i
       res
 
-
   type Monoid<'a> = 
       { neutral : 'a
         op : 'a -> 'a -> 'a }
@@ -89,10 +66,34 @@ module AddingTwoColours =
 
   Check.Quick `` Z is the neutral element`` 
   Check.Quick ``The operation is commutative``
+module UnderstandingZero =
+(*
+6. Implement a builder with a Zero member, maske sure you 
+   print something from within it.
+*)
+    type ZeroBuilder ()=
+        member __.Zero() = 
+            printfn "From within Zero"
+            0
+
+    let zero = ZeroBuilder()       
+    let justPrint ()= zero {
+        printfn "Inside the computation expression"
+    }
+    justPrint()
+    
+    let withIf (x:bool) = zero {
+       if (x) then
+           printfn("This is true")    
+    }
+    withIf false
+
 
 module MonoidsWithComputationExpressions = 
   open MonoidSetup
-
+(*
+7. Implement a builder for a monoid. 
+*)
   type MonoidBuilder ()= 
     member this.Zero() = neutral
 
