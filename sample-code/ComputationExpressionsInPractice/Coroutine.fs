@@ -2,8 +2,8 @@
 
 
 module Coroutine =
-  (* https://github.com/fsprojects/FSharpx.Extras/blob/master/src/FSharpx.Extras/ComputationExpressions/Continuation.fs
-  *)
+ // This is from https://github.com/fsprojects/FSharpx.Extras/blob/master/src/FSharpx.Extras/ComputationExpressions/Continuation.fs
+ //  could be fun to try to understand it
   open System
 
   open System.Collections.Generic
